@@ -1,37 +1,23 @@
-import { Company } from "./Company";
-import { User } from "./User";
-
-const opts = {
-  center: {
-    lat: 0,
-    lng: 0,
-  },
-  zoom: 1,
-};
-
+import { IMapMarkers } from "../interfaces";
 export class CustomMap {
   private googleMap: google.maps.Map;
   
   constructor(elementId: string) {
-    this.googleMap = new google.maps.Map(document.getElementById(elementId), opts);
-  };
-
-  addUserMarker(user: User): void {
-    new google.maps.Marker({
-      map: this.googleMap,
-      position: {
-        lat: user.location.lat,
-        lng: user.location.lng,
+    this.googleMap = new google.maps.Map(document.getElementById(elementId), {
+      center: {
+        lat: 0,
+        lng: 0,
       },
+      zoom: 1,
     });
   };
 
-  addCompanyMarker(company: Company): void {
+  addMarker(mapMarker: IMapMarkers): void {
     new google.maps.Marker({
       map: this.googleMap,
       position: {
-        lat: company.location.lat,
-        lng: company.location.lng,
+        lat: mapMarker.location.lat,
+        lng: mapMarker.location.lng,
       },
     });
   };

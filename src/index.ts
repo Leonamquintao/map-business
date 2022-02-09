@@ -6,6 +6,8 @@ import { CustomMap } from './entities/CustomMap';
 const htmlElement = 'map_canvas';
 
 const user = new User();
+const company = new Company();
 const customMap = new CustomMap(htmlElement);
 
-customMap.addUserMarker(user);
+customMap.addMarker(user);
+customMap.addMarker(company);
