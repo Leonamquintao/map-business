@@ -4,4 +4,8 @@ import { Company } from './entities/Company';
 import { CustomMap } from './entities/CustomMap';
 
 const htmlElement = 'map_canvas';
-new CustomMap(htmlElement);
+
+const user = new User();
+const customMap = new CustomMap(htmlElement);
+
+customMap.addUserMarker(user);
