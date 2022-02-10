@@ -1,6 +1,7 @@
 import faker from '@faker-js/faker';
+import { IMapMarkers } from '../interfaces';
 
-export class User {
+export class User implements IMapMarkers{
   name: string;
   location: {
     lat: number;
@@ -13,5 +14,13 @@ export class User {
       lat: parseFloat(faker.address.latitude()),
       lng: parseFloat(faker.address.longitude()),
     };
-  }
+  };
+
+  markerContent(): string {
+    return `
+      <div>
+        <h2>User name: ${this.name}</h2>
+      </div>
+    `;
+  };
 };

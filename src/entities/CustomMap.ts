@@ -20,13 +20,14 @@ export class CustomMap {
         lng: mapMarker.location.lng,
       },
     });
-    this.showInfoWindow(marker);
+    const content =  mapMarker.markerContent();
+    this.showInfoWindow(marker, content);
   };
 
-  private showInfoWindow(marker: google.maps.Marker): void {
+  private showInfoWindow(marker: google.maps.Marker, content: string): void {
     marker.addListener('click', () => {
       const infoWindow = new google.maps.InfoWindow({
-        content: 'Hi there'
+        content: content
       });
       infoWindow.open(this.googleMap, marker);
     });

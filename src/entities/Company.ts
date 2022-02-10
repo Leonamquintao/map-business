@@ -1,5 +1,6 @@
 import faker from '@faker-js/faker';
-export class Company {
+import { IMapMarkers } from '../interfaces';
+export class Company implements IMapMarkers {
   companyName: string;
   catchPhrase: string;
   location: {
@@ -14,5 +15,14 @@ export class Company {
       lat: parseFloat(faker.address.latitude()),
       lng: parseFloat(faker.address.latitude()),
     };
+  };
+
+  markerContent(): string {
+    return `
+      <div>
+        <h2>Company name: ${this.companyName}</h2>
+        <h3>Catchphrase: ${this.catchPhrase}</h3>
+      </div>
+    `;
   };
 };
