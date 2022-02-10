@@ -13,12 +13,22 @@ export class CustomMap {
   };
 
   addMarker(mapMarker: IMapMarkers): void {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mapMarker.location.lat,
         lng: mapMarker.location.lng,
       },
+    });
+    this.showInfoWindow(marker);
+  };
+
+  private showInfoWindow(marker: google.maps.Marker): void {
+    marker.addListener('click', () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: 'Hi there'
+      });
+      infoWindow.open(this.googleMap, marker);
     });
   };
 };
